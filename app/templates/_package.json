@@ -1,0 +1,17 @@
+{
+  "name": "<%= _.slugify(themeName) %>",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-stylus": "^0.19.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

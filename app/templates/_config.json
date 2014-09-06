@@ -1,0 +1,4 @@
+{
+    "ghost_location": "<%= ghostDir %>",
+    "ghost_theme_name": "<%= themeName %>"
+}
