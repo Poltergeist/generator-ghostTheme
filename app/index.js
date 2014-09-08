@@ -79,7 +79,13 @@ JadeGenerator.prototype.git = function git() {
 };
 
 JadeGenerator.prototype.hbs = function hbs() {
-  this.copy('templates/_index.hbs', 'templates/index.hbs');
+  this.copy('templates/_index.hbs', 'index.hbs');
+  this.copy('templates/_default.hbs', 'default.hbs');
+  this.copy('templates/_author.hbs', 'author.hbs');
+  this.copy('templates/_page.hbs', 'page.hbs');
+  this.copy('templates/_post.hbs', 'post.hbs');
+  this.copy('templates/_tag.hbs', 'tag.hbs');
+  this.copy('templates/_partials/_loop.hbs', 'partials/loop.hbs');
 };
 
 JadeGenerator.prototype.projectFiles = function projectFiles() {
