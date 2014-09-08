@@ -2,7 +2,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    config: require('./config.json'),
 
     pkg: grunt.file.readJSON('package.json'),
 
@@ -12,7 +11,7 @@ module.exports = function(grunt) {
         tasks: ['stylus']
       },
       copy: {
-        files: 'templates/**/*.hbs',
+        files: '**/*.hbs',
         tasks: ['copy:hbs']
       },
       uglify: {
@@ -32,7 +31,7 @@ module.exports = function(grunt) {
       },
       combinejs: {
         files: {
-          '<%= config.ghost_location %>content/themes/<%= config.ghost_theme_name %>/assets/js/all.min.js':
+          '<%= ghostDir %>content/themes/<%= themeName %>/assets/js/all.min.js':
           [
             'js/*.js'
           ]
@@ -44,10 +43,10 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: 'templates',
-          dest: '<%=config.ghost_location%>content/themes/<%= config.ghost_theme_name %>/',
+          dest: '<%=ghostDir%>content/themes/<%= themeName %>/',
           src: [
             '*.hbs',
+            '**/*.hbs'
           ]
         }]
       }
@@ -72,7 +71,7 @@ module.exports = function(grunt) {
     cssmin: {
       combine: {
         files: {
-          '<%= config.ghost_location %>content/themes/<%= config.ghost_theme_name %>/assets/css/style.css': [
+          '<%= ghostDir %>content/themes/<%= themeName %>/assets/css/style.css': [
             'bower_components/normalize-css/normalize.css', '.tmp/*.css']
         }
       }
@@ -80,6 +79,21 @@ module.exports = function(grunt) {
 
 
   });
+
+  grunt.registerTask('serve', function(target) {
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    }
+
+    grunt.task.run([
+      'copy:hbs',
+      'stylus',
+      'cssmin',
+      'uglify',
+      'watch'
+    ]);
+  });
+
 
   // Load grunt plugins.
   grunt.loadNpmTasks('grunt-contrib-copy');

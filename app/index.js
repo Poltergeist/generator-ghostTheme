@@ -60,7 +60,6 @@ JadeGenerator.prototype.askFor = function askFor() {
 
 JadeGenerator.prototype.gruntfile = function gruntfile() {
   this.template('_Gruntfile.js', 'Gruntfile.js');
-  this.template('_config.json', 'config.json');
 };
 
 JadeGenerator.prototype.tools = function tools() {
