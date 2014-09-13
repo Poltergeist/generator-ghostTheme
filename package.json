@@ -1,5 +1,5 @@
 {
-  "name": "generator-ghostTheme",
+  "name": "generator-ghosttheme",
   "version": "0.0.1",
   "description": "Generates a ghost theme and helps during development.",
   "main": "app/index.js",
